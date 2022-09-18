@@ -1,0 +1,33 @@
+<html>
+    <style></style>
+</html>
+<body>
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <div id="app">
+        {{msg}}
+        <input v-model="inputValue"/>
+        <button @click="alertValue">来吧</button>
+        <p>{{inputValue}}</p>
+        <ul>
+            <li v-for="item in arr">{{item}}</li>
+        </ul>
+    </div>
+    <script>
+      new Vue({
+          el: '#app',
+          data() {
+              return {
+                  msg: 'hello word',
+                  inputValue: 1,
+                  arr: ['吃饭', '睡觉', '打豆豆']
+              }
+          },
+          methods: {
+              alertValue() {
+                //   alert(this.inputValue);
+                this.inputValue++;
+              }
+          }
+      })
+    </script>
+</body>
