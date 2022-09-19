@@ -1,17 +1,43 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <input :value="inputValue" />
+    <button @click="pushArr">添加</button>
+    <!-- <ul>
+      <todo-item v-for="(item, index) in arr" :index="index" :item="item"  :key="index">
+        {{item}}
+      </todo-item>
+    </ul> -->
+    <ul>
+      <todo-item v-for="(item, index) in arr" :index="index" :key="index">
+        <template v-slot:ant-error="childProps">
+          <span :style="{color: childProps.checked ? 'red' : 'blue'}" >{{item}}</span>
+        </template>
+      </todo-item>
+    </ul>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TodoItem from './components/todoItem.vue'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      msg: 'hello word',
+      inputValue: 1,
+      arr: ['吃饭', '睡觉', '打豆豆']
+    }
+  },
+  methods: {
+    pushArr() {
+      this.inputValue++;
+      this.arr.push(this.inputValue);
+    }
+  },
   components: {
-    HelloWorld
+    TodoItem
   }
 }
 </script>
