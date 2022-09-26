@@ -1,7 +1,7 @@
 <template>
   <li>
     <input type="checkbox" v-model="checked">
-    <slot name="ant-error" v-bind="{checked}"></slot>
+    <slot name="ant-error" v-bind="{checked: checked}"></slot>
   </li>
 </template>
 

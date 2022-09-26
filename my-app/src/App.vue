@@ -15,11 +15,13 @@
         </template>
       </todo-item>
     </ul>
+    <EventItem></EventItem>
   </div>
 </template>
 
 <script>
 import TodoItem from './components/todoItem.vue'
+import EventItem from './components/eventTest.vue'
 
 export default {
   name: 'App',
@@ -37,7 +39,8 @@ export default {
     }
   },
   components: {
-    TodoItem
+    TodoItem,
+    EventItem
   }
 }
 </script>
