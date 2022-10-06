@@ -11,7 +11,9 @@
         :value="phoneInfo.phone"
         type="text"
         placeholder="手机号"
+        @blur="checkPhone"
         @input="handlePhoneChange"/>
+      <span style="color: red">{{phoneErrMsg}}</span>
     </div>
     <div>
       <input 
@@ -35,6 +37,11 @@ export default {
     phoneInfo: Object,
     zipCode: String
   },
+  data() {
+    return {
+      phoneErrMsg: ''
+    }
+  },
   methods: {
     handelAreaCodeChange(e) {
       console.log(e, 'handelAreaCodeChange')
@@ -48,10 +55,20 @@ export default {
         ...this.phoneInfo,
         phone: e.target.value
       })
-      
     },
     handleZipCodeChange(e) {
       this.$emit('update:zipCode', e.target.value)
+    },
+    checkPhone() {
+      this.phoneErrMsg = '';
+      if (this.phoneInfo.phone) {
+        if (this.phoneInfo.phone.length !== 11) {
+          this.phoneErrMsg += '手机号长度须为11位！';
+        }
+        if (isNaN(this.phoneInfo.phone)) {
+          this.phoneErrMsg += '手机号须为纯数字！';
+        }
+      }
     }
   }
 }
