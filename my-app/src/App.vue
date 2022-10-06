@@ -16,12 +16,15 @@
       </todo-item>
     </ul>
     <EventItem></EventItem>
+    <!-- 双向绑定 -->
+    <personInfo></personInfo>
   </div>
 </template>
 
 <script>
 import TodoItem from './components/todoItem.vue'
 import EventItem from './components/eventTest.vue'
+import personInfo from './views/1-1/index.vue'
 
 export default {
   name: 'App',
@@ -40,7 +43,8 @@ export default {
   },
   components: {
     TodoItem,
-    EventItem
+    EventItem,
+    personInfo
   }
 }
 </script>
